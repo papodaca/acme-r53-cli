@@ -7,6 +7,8 @@ require "acme-client"
 require "aws-sdk-route53"
 require "pry"
 
+require "acme-cli/version"
+
 doc = <<DOCOPT
 acme.rb
 
@@ -138,7 +140,7 @@ end
 exit 1 if options == nil
 
 if options["--version"]
-  STDERR.puts "THIS VERSION"
+  STDERR.puts AcmeCli::Version::VERSION
   exit 0
 end
 

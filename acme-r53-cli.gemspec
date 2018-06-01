@@ -2,15 +2,15 @@
 require_relative "lib/acme-cli/version"
 
 Gem::Specification.new do |s|
-  s.name          = 'acme-cli'
+  s.name          = 'acme-r53-cli'
   s.version       = AcmeCli::Version::VERSION
   s.date          = '2018-05-31'
   s.summary       = "A cli interface for ACMEv2 DNS challenges with Route53"
   s.description   = "A cli interface for ACMEv2 DNS challenges with Route53"
   s.authors       = ["Ethan Apocaca"]
   s.email         = 'papodaca@gmail.com'
-  s.files         = ["bin/acme.rb", "lib/**"]
-  s.executables   = ["bin/acme.rb"]
+  s.files         = ["lib/acme-cli/cli.rb", "lib/acme-cli/version.rb"]
+  s.executables   = ["acme-r53.rb"]
   s.require_paths = ["lib"]
   s.homepage      =
     'https://github.com/papodaca/acme-cli'

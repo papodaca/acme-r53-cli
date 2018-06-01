@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.executables   = ["acme-r53.rb"]
   s.require_paths = ["lib"]
   s.homepage      =
-    'https://github.com/papodaca/acme-cli'
+    'https://github.com/papodaca/acme-r53-cli'
   s.license       = 'MIT'
 
   s.add_runtime_dependency("docopt",           "~> 0.6")

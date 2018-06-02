@@ -23,24 +23,41 @@ Options:
   --account <account.pem>    Provide existing account key
   --domain <domain.pem>      Provide domain private key
   --staging                  Use LE Staging directory
+  --ec                       Use EC private keys
 
 DOCOPT
 
-def load_key(passed_in, passed_in_path, default_path)
+def make_key_object(file: nil, ec: false)
+  if ec
+    if file.nil?
+      OpenSSL::PKey::EC.generate("prime256v1")
+    else
+      OpenSSL::PKey::EC.new(file)
+    end
+  else
+    if file.nil?
+      OpenSSL::PKey::RSA.new(4096)
+    else
+      OpenSSL::PKey::RSA.new(file)
+    end
+  end
+end
+
+def load_key(passed_in, passed_in_path, default_path, ec = false)
   if passed_in
     STDERR.puts "Loading #{passed_in_path}"
     if !File.file?(passed_in_path)
       STDERR.puts "[Error]: Cannot load #{passed_in_path}"
       exit 1
     end
-    OpenSSL::PKey::RSA.new(File.read(passed_in_path))
+    make_key_object(file: File.read(passed_in_path), ec: ec)
   else
     if File.file?(default_path)
       STDERR.puts "Loading #{default_path}"
-      OpenSSL::PKey::RSA.new(File.read(default_path))
+      make_key_object(file: File.read(default_path), ec: ec)
     else
       STDERR.puts "Creating key #{default_path}"
-      key = OpenSSL::PKey::RSA.new(4096)
+      key = make_key_object(ec: ec)
       File.write(default_path, key)
       key
     end
@@ -147,7 +164,8 @@ end
 account_key = load_key(
   !!options["--account"],
   options["--account"],
-  "./account.pem"
+  "./account.pem",
+  options["--ec"]
 )
 
 directory = if options["--staging"]
@@ -203,7 +221,8 @@ elsif options["sign"]
   domain_key = load_key(
     !!options["--domain"],
     options["--domain"],
-    "./domain.pem"
+    "./domain.pem",
+    options["--ec"]
   )
 
   STDERR.puts "Signing cert for: #{identifiers.join(", ")}"

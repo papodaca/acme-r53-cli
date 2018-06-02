@@ -21,6 +21,7 @@ Options:
   --account <account.pem>    Provide existing account key
   --domain <domain.pem>      Provide domain private key
   --staging                  Use LE Staging directory
+  --ec                       Use EC private keys
 
 ```
 

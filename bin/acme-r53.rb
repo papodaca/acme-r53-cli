@@ -58,7 +58,7 @@ def load_key(passed_in, passed_in_path, default_path, ec = false)
     else
       STDERR.puts "Creating key #{default_path}"
       key = make_key_object(ec: ec)
-      File.write(default_path, key)
+      File.write(default_path, key.to_pem)
       key
     end
   end

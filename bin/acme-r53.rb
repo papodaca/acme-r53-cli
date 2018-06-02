@@ -9,13 +9,13 @@ require "aws-sdk-route53"
 require "acme-cli/version"
 
 doc = <<DOCOPT
-acme.rb
+acme-r53.rb
 
 Usage:
-  acme.rb sign [options] <domain_name> [<alt_name>...]
-  acme.rb register [options] --email <email> [--agree-terms]
-  acme.rb -h | --help
-  acme.rb -v | --version
+  acme-r53.rb sign [options] <domain_name> [<alt_name>...]
+  acme-r53.rb register [options] --email <email> [--agree-terms]
+  acme-r53.rb -h | --help
+  acme-r53.rb -v | --version
 
 Options:
   -h --help                  Show this message

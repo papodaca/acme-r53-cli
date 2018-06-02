@@ -5,7 +5,6 @@ require "openssl"
 require "docopt"
 require "acme-client"
 require "aws-sdk-route53"
-require "pry"
 
 require "acme-cli/version"
 

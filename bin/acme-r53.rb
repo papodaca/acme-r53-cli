@@ -29,7 +29,7 @@ DOCOPT
 def load_key(passed_in, passed_in_path, default_path)
   if passed_in
     STDERR.puts "Loading #{passed_in_path}"
-    if File.file?(passed_in_path)
+    if !File.file?(passed_in_path)
       STDERR.puts "[Error]: Cannot load #{passed_in_path}"
       exit 1
     end

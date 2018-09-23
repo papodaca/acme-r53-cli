@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.date          = '2018-05-31'
   s.summary       = "A cli interface for ACMEv2 DNS challenges with Route53"
   s.description   = "A cli interface for ACMEv2 DNS challenges with Route53"
-  s.authors       = ["Ethan Apocaca"]
+  s.authors       = ["Ethan Apodaca"]
   s.email         = 'papodaca@gmail.com'
   s.files         = ["lib/acme-cli/cli.rb", "lib/acme-cli/version.rb"]
   s.executables   = ["acme-r53.rb"]
